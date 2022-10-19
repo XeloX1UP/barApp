@@ -1,0 +1,7 @@
+.env
+node_modules
+init-mongo.js
+Dockerfile.dev
+docker-compose-dev.yml
+.vscode
+.dockerignore

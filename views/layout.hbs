@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/navBar.css" />
+    {{#if styleSheets}}
+      {{#each styleSheets}}
+        <link rel="stylesheet" href="/stylesheets/{{styleSheet}}.css" />
+      {{/each}}
+    {{/if}}
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/"><div class="cntLogo"><img
+              src="/images/favicon.png"
+            /></div></a>
+        <ul>
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/buscar">Buscar</a></li>
+          <li><a href="/admin">Mis recetas</a></li>
+          {{#if auth}}
+            <li><a href="/admin/logout">Cerrar sesion</a></li>
+          {{/if}}
+        </ul>
+      </nav>
+    </header>
+    <div class="contenido">
+      {{{body}}}
+    </div>
+    <script src="/javascripts/errorMessages.js"></script>
+  </body>
+</html>

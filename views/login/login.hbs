@@ -1,0 +1,26 @@
+{{#if messages}}
+  {{#each messages}}
+    <p class="error-message">{{message}}</p>
+
+  {{/each}}
+{{/if}}
+<form id="frmLogin" action="/admin/login" method="post">
+  <fieldset id="loginFS">
+    <legend>Iniciar sesion</legend>
+    <input
+      type="email"
+      name="username"
+      id="user"
+      placeholder="Correo electronico"
+    />
+    <input
+      type="password"
+      name="password"
+      id="password"
+      placeholder="Password"
+    />
+    <a href="/admin/forgotpassword">¿Olvidaste tu contraseña?</a>
+    <a href="/admin/register">Regístrate aquí</a>
+    <input type="submit" value="Iniciar sesion" class="btn-login" />
+  </fieldset>
+</form>

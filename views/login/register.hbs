@@ -1,0 +1,180 @@
+{{#if errors}}
+  <div id="messageArea">
+    {{#each errors}}
+      <p class="messageError">{{message}}<span class="closeError">X</span></p>
+    {{/each}}
+  </div>
+{{/if}}
+<form action="/admin/register" method="post" id="frmRegister">
+  <fieldset class="frmFS">
+    <legend>Registro de usuario</legend>
+    {{#if values}}
+      {{#with values}}
+        <label for="firstName">Nombre:
+          <span style="color: red;">*</span>
+        </label>
+        <input
+          type="text"
+          class="register-inputs"
+          id="firstName"
+          maxlength="30"
+          name="firstName"
+          value="{{firstName}}"
+        />
+
+        <label for="lastName">Apellido:
+          <span style="color: red;">*</span>
+        </label>
+        <input
+          type="text"
+          class="register-inputs"
+          id="lastName"
+          name="lastName"
+          maxlength="30"
+          value="{{lastName}}"
+        />
+
+        <label for="password">Contraseña:
+          <span style="color: red;">*</span>
+        </label>
+        <input
+          type="password"
+          class="register-inputs"
+          id="password"
+          maxlength="10"
+          name="password"
+          value="{{password}}"
+        />
+
+        <label for="re-password">Reingrese la contraseña:
+          <span style="color: red;">*</span>
+        </label>
+        <input
+          type="password"
+          class="register-inputs"
+          id="re-password"
+          maxlength="10"
+          name="rePassword"
+          value="{{rePassword}}"
+        />
+
+        <label for="email">Correo:
+          <span style="color: red;">*</span>
+        </label>
+        <input
+          type="email"
+          class="register-inputs"
+          name="email"
+          id="email"
+          maxlength="60"
+          value="{{email}}"
+        />
+
+        <label for="re-email">Reingrese correo:
+          <span style="color: red;">*</span>
+        </label>
+        <input
+          type="text"
+          class="register-inputs"
+          name="reEmail"
+          id="re-email"
+          maxlength="60"
+          value="{{reEmail}}"
+        />
+
+        <label for="link">link:
+          <span style="color: red;">*</span>
+          <span><span id="preLink"></span>/</span>
+        </label>
+        <input
+          type="text"
+          class="register-inputs"
+          name="link"
+          id="link"
+          maxlength="10"
+          value="{{link}}"
+        />
+      {{/with}}
+    {{else}}
+      <label for="firstName">Nombre:
+        <span style="color: red;">*</span>
+      </label>
+      <input
+        type="text"
+        class="register-inputs"
+        id="firstName"
+        maxlength="30"
+        name="firstName"
+      />
+
+      <label for="lastName">Apellido:
+        <span style="color: red;">*</span>
+      </label>
+      <input
+        type="text"
+        class="register-inputs"
+        id="lastName"
+        name="lastName"
+        maxlength="30"
+      />
+
+      <label for="password">Contraseña:
+        <span style="color: red;">*</span>
+      </label>
+      <input
+        type="password"
+        class="register-inputs"
+        id="password"
+        maxlength="10"
+        name="password"
+      />
+
+      <label for="re-password">Reingrese la contraseña:
+        <span style="color: red;">*</span>
+      </label>
+      <input
+        type="password"
+        class="register-inputs"
+        id="re-password"
+        maxlength="10"
+        name="rePassword"
+      />
+
+      <label for="email">Correo:
+        <span style="color: red;">*</span>
+      </label>
+      <input
+        type="email"
+        class="register-inputs"
+        name="email"
+        id="email"
+        maxlength="60"
+      />
+
+      <label for="re-email">Reingrese correo:
+        <span style="color: red;">*</span>
+      </label>
+      <input
+        type="text"
+        class="register-inputs"
+        name="reEmail"
+        id="re-email"
+        maxlength="60"
+      />
+
+      <label for="link">link:
+        <span style="color: red;">*</span>
+        <span><span id="preLink"></span>/</span>
+      </label>
+      <input
+        type="text"
+        class="register-inputs"
+        name="link"
+        id="link"
+        maxlength="10"
+      />
+    {{/if}}
+    <input type="submit" value="Registrarse" class="btn-register" />
+  </fieldset>
+</form>
+<script src="/javascripts/register.js"></script>
