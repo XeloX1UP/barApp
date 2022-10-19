@@ -29,7 +29,7 @@ const store = new mongoDBStore({
 });
 
 store.on("error", (err) => console.error(err));
-
+//prueba
 // app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(bodyParser.text({ type: "text/html" }));
