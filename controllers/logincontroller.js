@@ -18,6 +18,11 @@ controller.login = async (req, res, next) => {
       res.render("admin/index.hbs", {
         auth,
         username: req.session.username,
+        styleSheets: [
+          {
+            styleSheet: "addRecipe",
+          },
+        ],
       });
     } else {
       errors.push({ message: "Usuario no encontrado" });
@@ -46,6 +51,11 @@ controller.renderRegister = (req, res, next) => {
     : res.render("admin/index.hbs", {
         auth,
         username: req.session.username,
+        styleSheets: [
+          {
+            styleSheet: "addRecipe",
+          },
+        ],
       });
 };
 controller.createUser = async (req, res, next) => {

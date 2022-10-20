@@ -5,7 +5,10 @@ var buscarController = require("../controllers/buscarController.js");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("index", { title: "Recetas bartenders", auth: req.session.auth });
+  res.render("index", {
+    title: "Recetas bartenders",
+    auth: req.session.auth,
+  });
 });
 // Index buscar
 router.get("/buscar", buscarController.buscarIndex);

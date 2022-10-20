@@ -1,0 +1,86 @@
+form.formNewDrink {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin: 10px;
+  width: 700px;
+  min-height: 200px;
+}
+form.formNewDrink .newRecipeFS.on {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: none;
+  padding: 10px 5px;
+  border-radius: 8px;
+  box-shadow: rgba(177, 7, 219, 0.082) 0px 50px 100px -20px,
+    rgba(107, 0, 75, 0.3) 0px 30px 60px -30px,
+    rgba(59, 61, 165, 0.35) 0px -2px 6px 0px inset;
+  margin: 15px;
+  width: 100%;
+}
+form.formNewDrink .newRecipeFS {
+  display: none;
+}
+form.formNewDrink .newRecipeFS.on legend {
+  font-weight: bolder;
+  font-size: 1.2rem;
+}
+form.formNewDrink .newRecipeFS.on input,
+form.formNewDrink .newRecipeFS.on select,
+form.formNewDrink .newRecipeFS.on textarea {
+  padding: 6px 6px 6px 12px;
+  color: #4c6793;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #5c2e7e;
+  border-bottom-right-radius: 8px;
+  margin-left: 5px;
+  font-size: 1.1rem;
+  min-width: 100px;
+}
+form.formNewDrink .newRecipeFS.on input.onlyInput {
+  width: 100%;
+}
+form.formNewDrink .newRecipeFS.on textarea {
+  width: 70%;
+  height: 100px;
+  resize: none;
+}
+form.formNewDrink .newRecipeFS.on input::placeholder,
+form.formNewDrink .newRecipeFS.on select::placeholder {
+  color: #8bbccc;
+}
+form.formNewDrink .newRecipeFS.on div.stepsArea,
+form.formNewDrink .newRecipeFS.on div.ingredientsArea {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+form.formNewDrink .newRecipeFS.on div.stepsArea label.sNumber {
+  font-size: 2rem;
+  padding-left: 20px;
+}
+form.formNewDrink .newRecipeFS.on div.stepsArea input.addBtn,
+form.formNewDrink .newRecipeFS.on div.ingredientsArea input.addBtn {
+  font-weight: bold;
+  font-size: 2rem;
+  border: 1px solid #5c2e7e;
+  border-top-left-radius: 8px;
+  min-width: unset;
+  width: 40px;
+  padding: 5px;
+  text-align: center;
+  transition: 0.5s;
+}
+form.formNewDrink .newRecipeFS.on div.stepsArea input.addBtn:hover,
+form.formNewDrink .newRecipeFS.on div.ingredientsArea input.addBtn:hover {
+  cursor: pointer;
+  background: linear-gradient(to bottom, #d800f549 0%, #1324b85b 100%);
+  transform: scale(1.15);
+}

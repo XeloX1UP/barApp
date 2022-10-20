@@ -8,6 +8,7 @@ const recipeModel = new Schema(
     ingredients: [{ ingredient: String, cant: Number, metric: String }],
     steps: [{ step: Number, description: String }],
     imageRoute: String,
+    recipeStatus: Number,
   },
   {
     timestamps: true,

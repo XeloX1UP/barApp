@@ -11,6 +11,11 @@ router.get("/", function (req, res, next) {
     res.render("admin/index.hbs", {
       username,
       auth,
+      styleSheets: [
+        {
+          styleSheet: "addRecipe",
+        },
+      ],
     });
   } else {
     res.render("login/login.hbs", {
