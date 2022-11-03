@@ -19,6 +19,5 @@ router.get("/buscar/all", buscarController.getRecipes);
 // get recipes LIKE :name JSON
 router.get("/buscar/recipe/:name", controller.getSpecificRecipe);
 // post createRecipe
-router.post("/recipes/create", controller.createRecipe);
 
 module.exports = router;

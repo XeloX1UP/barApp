@@ -1,6 +1,8 @@
 const controller = {};
 const UserModel = require("../models/User");
-const helper = require("../helpers/loginHelper");
+const RecipeModel = require("../models/Recipe");
+const loginHelper = require("../helpers/loginHelper");
+const recipeHelper = require("../helpers/recipeHelper");
 
 controller.login = async (req, res, next) => {
   const { username, password } = req.body;
@@ -67,15 +69,15 @@ controller.createUser = async (req, res, next) => {
   let avatar = "avatarImage.jpg";
   // hasta aqui
   let errors = [];
-  if (!helper.basicValidations(firstName))
+  if (!loginHelper.basicValidations(firstName))
     errors.push({
       message: "Nombre inválido (Debe contener entre 3 y 30 caracteres).",
     });
-  if (!helper.basicValidations(lastName))
+  if (!loginHelper.basicValidations(lastName))
     errors.push({
       message: "Apellido inválido (Debe contener entre 3 y 30 caracteres).",
     });
-  if (!helper.basicValidations(password))
+  if (!loginHelper.basicValidations(password))
     errors.push({
       message: "Password inválido (Debe contener entre 3 y 30 caracteres).",
     });
@@ -83,7 +85,11 @@ controller.createUser = async (req, res, next) => {
     errors.push({ message: "Los passwords no coinciden." });
   if (reEmail != email) errors.push({ message: "Correos no coinciden." });
   if (role < 1 || role > 3) errors.push({ message: "Rol inválido." });
-  if (email.length > 60 || email.length < 4 || !helper.validateEmail(email)) {
+  if (
+    email.length > 60 ||
+    email.length < 4 ||
+    !loginHelper.validateEmail(email)
+  ) {
     errors.push({
       message: "Correo inválido (Debe contener entre 5 y 60 caracteres).",
     });
@@ -134,6 +140,41 @@ controller.logout = (req, res, next) => {
     auth: false,
     username: req.session.username,
   });
+};
+controller.renderNewRecipeForm = (req, res, next) => {
+  const username = req.session.username;
+  const auth = req.session.auth;
+  if (!auth)
+    res.render("login/login.hbs", {
+      styleSheets: [
+        {
+          styleSheet: "login",
+        },
+      ],
+      auth,
+    });
+
+  res.render("admin/newRecipe.hbs", {
+    username,
+    auth,
+    styleSheets: [
+      {
+        styleSheet: "addRecipe",
+      },
+    ],
+  });
+};
+controller.newRecipe = async (req, res, next) => {
+  try {
+    const recipe = recipeHelper.getRecipe(req.body, req.session.username);
+
+    const newRecipe = new RecipeModel(recipe);
+    // await newRecipe.save();
+
+    res.send(newRecipe);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 module.exports = controller;

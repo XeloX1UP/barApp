@@ -1,7 +1,6 @@
 var express = require("express");
 const controller = require("../controllers/logincontroller");
 var router = express.Router();
-const userController = require("../controllers/logincontroller");
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
@@ -29,9 +28,11 @@ router.get("/", function (req, res, next) {
   }
 });
 
-router.post("/login", userController.login);
+router.post("/login", controller.login);
 router.get("/register", controller.renderRegister);
 router.post("/register", controller.createUser);
 router.get("/logout", controller.logout);
+router.get("/newRecipe", controller.renderNewRecipeForm);
+router.post("/newRecipe", controller.newRecipe);
 
 module.exports = router;

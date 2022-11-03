@@ -34,17 +34,17 @@ controller.getSpecificRecipe = async (req, res, next) => {
     console.error(err);
   }
 };
-controller.createRecipe = async (req, res, next) => {
-  const { name, origin, portions, ingredients, steps, imageRoute } = req.body;
-  new RecipeModel({
-    name,
-    origin,
-    portions,
-    ingredients,
-    steps,
-    imageRoute,
-  });
-  res.json([{ message: "Receta creada" }]);
-};
 
+// controller.createRecipe = async (req, res, next) => {
+//   const { name, origin, portions, ingredients, steps, imageRoute } = req.body;
+//   new RecipeModel({
+//     name,
+//     origin,
+//     portions,
+//     ingredients,
+//     steps,
+//     imageRoute,
+//   });
+//   res.json([{ message: "Receta creada" }]);
+// };
 module.exports = controller;
