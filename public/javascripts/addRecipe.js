@@ -34,47 +34,60 @@ const addStep = (e) => {
 
 addFunctionIngredient(addBtns[0]);
 addFunctionStep(addBtns[1]);
-
-const getFormData = () => {
-  const data = {};
-  data.name = document.getElementById("recipeName").value;
-  data.origin = document.getElementById("recipeOrigin").value;
-  data.portions = document.getElementById("recipePortions").value;
-  data.ingredients = newArrayFromCollection(
-    document.getElementsByClassName("ingredientsArea")
-  );
-  data.steps = newArrayFromCollection(
-    document.getElementsByClassName("stepsArea")
-  );
-  data.imageRoute = document.getElementById("image");
-  return data;
+const valid = {
+  nombre: false,
+  origen: false,
+  porcion: false,
+  cantidad: false,
+  ingrediente: false,
+  paso: false,
 };
-
-const newArrayFromCollection = (collection) => {
-  let list = Array.from(collection);
-  if (collection[0].id == "ingredientsArea") {
-    list = list.map((div) => ({
-      cant: div.children[0].value.trim(),
-      metric: div.children[1].value.trim(),
-      ingredient: div.children[3].value.trim(),
-    }));
-    return list;
-  } else if (collection[0].id == "stepsArea") {
-    list = list.map((div) => ({
-      step: div.children[0].innerText.trim().replace(".", "").replace("-", ""),
-      description: div.children[1].value.trim(),
-    }));
-    return list;
+const expresion = {
+  nombre: /^[a-zA-Z\s]{4,35}$/,
+  origen: /^[a-zA-Z\s]{3,35}$/,
+  porcion: /^[1-9]{1}$/,
+  cantidad: /^[1-9]{1,3}$/,
+  ingrediente: /^[a-zA-Z\s]{3,35}$/,
+  paso: /^[a-zA-Z0-9,.-_\s]{6,200}$/,
+};
+const validarCampo = (input, regEx, campo) => {
+  if (regEx.test(input.value)) {
+    valid[campo] = true;
+    input.classList.remove("error");
+  } else {
+    valid[campo] = false;
+    input.classList.add("error");
   }
-  return list;
+};
+const validarFormulario = (e) => {
+  switch (e.target.name) {
+    case "recipeName":
+      validarCampo(e.target, expresion.nombre, "nombre");
+      break;
+    case "recipeOrigin":
+      validarCampo(e.target, expresion.origen, "origen");
+      break;
+    case "recipePortions":
+      validarCampo(e.target, expresion.porcion, "porcion");
+      break;
+    case "recipeIngredientCant":
+      validarCampo(e.target, expresion.cantidad, "cantidad");
+      break;
+    case "recipeIngredient":
+      validarCampo(e.target, expresion.ingrediente, "ingrediente");
+      break;
+    case "step":
+      validarCampo(e.target, expresion.paso, "paso");
+      break;
+  }
 };
 
+const inputs = document.querySelectorAll(".formNewDrink .input");
+inputs.forEach((input) => {
+  input.addEventListener("keyup", validarFormulario);
+  input.addEventListener("blur", validarFormulario);
+});
 btnSubmit.addEventListener("click", (e) => {
   e.preventDefault();
-  // const data = getFormData();
-  e.target.parentElement.submit();
-  // const req = new XMLHttpRequest();
-  // req.open("POST", "/admin/newRecipe", true);
-  // req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-  // req.send(JSON.stringify(data));
+  // e.target.parentElement.submit();
 });

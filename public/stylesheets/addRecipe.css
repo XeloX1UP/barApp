@@ -29,19 +29,7 @@ form.formNewDrink .newRecipeFS.on legend {
   font-weight: bolder;
   font-size: 1.2rem;
 }
-form.formNewDrink .newRecipeFS.on input,
-form.formNewDrink .newRecipeFS.on select,
-form.formNewDrink .newRecipeFS.on textarea {
-  padding: 6px 6px 6px 12px;
-  color: #4c6793;
-  background: none;
-  border: none;
-  border-bottom: 1px solid #5c2e7e;
-  border-bottom-right-radius: 8px;
-  margin-left: 5px;
-  font-size: 1.1rem;
-  min-width: 100px;
-}
+
 form.formNewDrink .newRecipeFS.on input.onlyInput {
   width: 100%;
 }
@@ -62,6 +50,20 @@ form.formNewDrink .newRecipeFS.on div.ingredientsArea {
   justify-content: space-between;
   align-items: center;
 }
+form.formNewDrink .newRecipeFS.on input,
+form.formNewDrink .newRecipeFS.on select,
+form.formNewDrink .newRecipeFS.on textarea {
+  padding: 6px 6px 6px 12px;
+  color: #4c6793;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #5c2e7e;
+  border-bottom-right-radius: 8px;
+  margin-left: 5px;
+  font-size: 1.1rem;
+  min-width: 100px;
+}
+
 form.formNewDrink .newRecipeFS.on div.stepsArea label.sNumber {
   font-size: 2rem;
   padding-left: 20px;
@@ -83,4 +85,12 @@ form.formNewDrink .newRecipeFS.on div.ingredientsArea input.addBtn:hover {
   cursor: pointer;
   background: linear-gradient(to bottom, #d800f549 0%, #1324b85b 100%);
   transform: scale(1.15);
+}
+form.formNewDrink input.input:focus,
+form.formNewDrink textarea.input:focus {
+  outline: none;
+}
+form.formNewDrink input.input.error,
+form.formNewDrink textarea.input.error {
+  border-color: red;
 }
